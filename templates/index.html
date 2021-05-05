@@ -1,49 +1,22 @@
 {{ define "content" }}
 
 <body>
-  <div>
-    <canvas id="the-canvas" style="border:1px solid black;"></canvas>
-    <div id="text-layer" class="textLayer"></div>
-  </div>
-<script>
- 
-PDFJS.getDocument("oasis.pdf").then(function(pdf){
-    var page_num = 1;
-    pdf.getPage(page_num).then(function(page){
-        var scale = 1.5;
-        var viewport = page.getViewport(scale);
-        var canvas = $('#the-canvas')[0];
-        var context = canvas.getContext('2d');
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
- 
-        var canvasOffset = $(canvas).offset();
-        var $textLayerDiv = $('#text-layer').css({
-            height : viewport.height+'px',
-            width : viewport.width+'px',
-            top : canvasOffset.top,
-            left : canvasOffset.left
-        });
- 
-        page.render({
-            canvasContext : context,
-            viewport : viewport
-        });
- 
-        page.getTextContent().then(function(textContent){
-           console.log( textContent );
-            var textLayer = new TextLayerBuilder({
-                textLayerDiv : $textLayerDiv.get(0),
-                pageIndex : page_num - 1,
-                viewport : viewport
-            });
- 
-            textLayer.setTextContent(textContent);
-            textLayer.render();
-        });
-    });
-});
-</script>
+  <body style="font-family: Arial, Helvetica, sans-serif;">
+
+    <div style="width:760px;">
+      <h2>About Us</h2>
+      <p>We help software developers do more with PDFs. PDF.js Express gives a flexible and modern UI to your PDF.js viewer while also adding out-of-the-box features like annotations, form filling and signatures.</p>
+
+        <!--
+          Place the following <div> element where you want the PDF to be displayed in your website. You can adjust the size using the width and height attributes.
+        -->
+        <div>
+            <iframe id="pdf-js-viewer" src="/web/viewer.html?file=%2Foasis.pdf" title="webviewer" frameborder="0" width="500" height="600"></iframe>
+        </div>
+
+    </div>
+
+  </body>
 </body>
 </html>
 {{end}}

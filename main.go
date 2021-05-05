@@ -32,7 +32,7 @@ func main() {
    mux := http.NewServeMux()
 
 	fmt.Println("Listening...")
-	mux.HandleFunc("/pdf/", Home)
+	mux.HandleFunc("/", Home)
     fs:= http.FileServer(http.Dir("static"))
 	mux.Handle("/static/",http.StripPrefix("/static/", fs))
     dn:= http.FileServer(http.Dir("pdf.js"))
