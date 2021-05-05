@@ -31,7 +31,7 @@ func main() {
 	fmt.Println("Listening...")
 	mux.HandleFunc("/pdf/", Home)
     fs:= http.FileServer(http.Dir("static"))
-	mux.Handle("/static/",http.StripPrefix("/static/", fs)
+	mux.Handle("/static/",http.StripPrefix("/static/", fs))
     dn:= http.FileServer(http.Dir("pdf.js"))
 	mux.Handle("/pdf.js/",http.StripPrefix("/pdf.js/", dn))
     http.ListenAndServe(GetPort(), mux)
