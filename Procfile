@@ -1,1 +1,1 @@
-web: bin/testjspdf
+web: bin/github.com
