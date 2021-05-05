@@ -1,1 +1,1 @@
-web: testjspdf
+web: bin/main
