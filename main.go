@@ -13,7 +13,8 @@ func Home(w http.ResponseWriter, r *http.Request) {
 //  lp := filepath.Join("templates","base.html")
 //fp := filepath.Join("templates", "index.html")
 fp := filepath.Join("index.html")
-	t, err := template.ParseFiles(fp)
+lp := filepath.Join("web/viewer.html")
+	t, err := template.ParseFiles(fp,lp)
 	if err!=nil{
 		fmt.Println("it's here1")
 		log.Fatalln(err)
